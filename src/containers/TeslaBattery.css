@@ -11,6 +11,11 @@
   letter-spacing: 3px;
 }
 
+.tesla-controls {
+  display: block;
+  width: 100%;
+}
+
 .tesla-climate-container {
   float: left;
   width: 420px;
@@ -18,9 +23,4 @@
   margin: 0 40px 0 0;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
-}
-
-.tesla-controls {
-  display: block;
-  width: 100%;
 }

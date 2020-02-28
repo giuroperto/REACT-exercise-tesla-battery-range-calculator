@@ -102,9 +102,9 @@ class TeslaBattery extends Component {
         <TeslaStats carstats={this.state.carstats} />
         <div className="tesla-controls cf">
           <TeslaCounter currentValue={this.state.config.speed} initValues={this.props.counterDefaultVal.speed} increment={this.increment} decrement={this.decrement} />
-        </div>
-        <div className="tesla-climate-container cf">
-          <TeslaCounter currentValue={this.state.config.temperature} initValues={this.props.counterDefaultVal.temperature} increment={this.increment} decrement={this.decrement} />
+          <div className="tesla-climate-container cf">
+            <TeslaCounter currentValue={this.state.config.temperature} initValues={this.props.counterDefaultVal.temperature} increment={this.increment} decrement={this.decrement} />
+          </div>
         </div>
         <TeslaNotice />
       </form>
