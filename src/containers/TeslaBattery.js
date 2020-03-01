@@ -5,6 +5,8 @@ import TeslaCar from '../components/TeslaCar/TeslaCar';
 import TeslaStats from '../components/TeslaStats/TeslaStats';
 import { getModelData } from '../services/BatteryService';
 import TeslaCounter from '../components/TeslaCounter/TeslaCounter';
+import TeslaClimate from '../components/TeslaClimate/TeslaClimate';
+import TeslaWheels from '../components/TeslaWheels/TeslaWheels';
 
 class TeslaBattery extends Component {
   constructor(props){
@@ -24,6 +26,8 @@ class TeslaBattery extends Component {
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
     this.updateCounterState = this.updateCounterState.bind(this);
+    this.handleChangeClimate = this.handleChangeClimate.bind(this);
+    this.handleChangeWheels = this.handleChangeWheels.bind(this);
   }
 
   componentDidMount() {
@@ -94,6 +98,18 @@ class TeslaBattery extends Component {
     });
   }
 
+  handleChangeClimate() {
+    const config = {...this.state.config};
+    config['climate'] = !this.state.config.climate;
+    this.setState({ config });
+  }
+
+  handleChangeWheels(size) {
+    const config = {...this.state.config};
+    config['wheels'] = size;
+    this.setState({ config });
+  }
+
   render() {
     return (
       <form className="tesla-battery">
@@ -104,7 +120,9 @@ class TeslaBattery extends Component {
           <TeslaCounter currentValue={this.state.config.speed} initValues={this.props.counterDefaultVal.speed} increment={this.increment} decrement={this.decrement} />
           <div className="tesla-climate-container cf">
             <TeslaCounter currentValue={this.state.config.temperature} initValues={this.props.counterDefaultVal.temperature} increment={this.increment} decrement={this.decrement} />
+            <TeslaClimate value={ this.state.config.climate } limit={ this.state.config.temperature > 10 } handleChangeClimate={this.handleChangeClimate} />
           </div>
+          <TeslaWheels value={this.state.config.wheels} handleChangeWheels={this.handleChangeWheels} />
         </div>
         <TeslaNotice />
       </form>
